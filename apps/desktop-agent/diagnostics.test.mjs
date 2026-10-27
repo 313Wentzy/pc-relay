@@ -1,0 +1,23 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { connectionDiagnostic, diagnosticSnapshot } from "./diagnostics.mjs";
+test("diagnostics distinguish pause causes without recording private input or credentials", () => {
+  const secret = "private-value-must-not-be-recorded";
+  const row = diagnosticSnapshot({ paired: true, connected: true, enabled: false, activeSession: secret, nativeReady: true, elevated: true, encryptedStorage: true, screens: [{ id: secret, label: secret }], certificate: secret, command: secret, output: secret, ip: secret }, { reason: "native_watchdog", at: 1000, key: secret, coordinates: secret }, { stage: "capture", code: "NotAllowedError", message: secret }, 2000);
+  assert.equal(row.pause.reason, "native_watchdog");
+  assert.equal(row.activeSession, true);
+  assert.equal(row.screens, 1);
+  const paused = diagnosticSnapshot({ enabled: true, available: false, pauseReason: "locked" }, { reason: "locked" }, null, 2000);
+  assert.equal(paused.locallyEnabled, true);
+  assert.equal(paused.available, false);
+  assert.equal(paused.transportPause, "locked");
+  assert.equal(JSON.stringify(row).includes(secret), false);
+  const local = diagnosticSnapshot({}, { reason: "local_takeover", at: 1000, source: "mouse", injected: true }, null, 2000);
+  assert.deepEqual(local.pause, { reason: "local_takeover", at: "1970-01-01T00:00:01.000Z", source: "mouse", injected: true });
+  const invalid = diagnosticSnapshot({ connection: { reason: secret, at: secret, closeCode: secret } }, { reason: secret, source: secret }, { stage: secret, code: secret }, 2000);
+  assert.equal(invalid.pause.reason, "startup");
+  assert.equal(invalid.captureError, null);
+  assert.equal(JSON.stringify(invalid).includes(secret), false);
+  assert.deepEqual(invalid.connection, { reason: "relay_error", at: null, closeCode: null });
+  assert.deepEqual(connectionDiagnostic("RATE_LIMITED", 1000, 1008), { reason: "RATE_LIMITED", at: "1970-01-01T00:00:01.000Z", closeCode: 1008 });
+});

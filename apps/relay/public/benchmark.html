@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Relay benchmark</title>
+    <link rel="stylesheet" href="/console.css" />
+    <script type="module" src="/benchmark.mjs"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <strong>Long Cable / Network benchmark</strong><a href="/console">PC console</a>
+      </header>
+      <h1>Relay HTTP round trip</h1>
+      <p>
+        30 small requests, one per second. No PC access. This measures this
+        browser to this relay, not screen latency.
+      </p>
+      <button id="start">Run benchmark</button>
+      <pre id="result">—</pre>
+      <button id="download" disabled>Download JSON</button>
+    </main>
+  </body>
+</html>

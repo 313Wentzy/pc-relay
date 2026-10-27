@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https: stun: turn: turns:; media-src 'self' blob:; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+    />
+    <title>Long Cable</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="renderer.js"></script>
+    <script type="module" src="capture.js"></script>
+  </head>
+  <body>
+    <main>
+      <header><strong>Long Cable / PC</strong><span>Benchmark build</span></header>
+      <h1 id="state">Starting</h1>
+      <p id="message" role="status"></p>
+      <dl>
+        <dt>Relay</dt>
+        <dd id="relay-status">Offline</dd>
+        <dt>Native input</dt>
+        <dd id="native-status">Checking</dd>
+        <dt>Privilege</dt>
+        <dd id="privilege">User</dd>
+        <dt>Last pause</dt>
+        <dd id="last-pause">Startup</dd>
+        <dt>Connection</dt>
+        <dd id="last-connection">—</dd>
+      </dl>
+      <form id="pair-form">
+        <h2>Pair PC</h2>
+        <label for="relay">Relay URL</label
+        ><input
+          id="relay"
+          type="url"
+          placeholder="https://your-relay.herokuapp.com"
+          required
+          maxlength="512"
+        /><label for="code">Pairing code from your browser</label
+        ><input
+          id="code"
+          required
+          maxlength="32"
+          autocomplete="off"
+          spellcheck="false"
+        /><button>Pair this PC</button>
+      </form>
+      <div id="paired" hidden>
+        <label class="enable"
+          ><input id="enabled" type="checkbox" role="switch" aria-describedby="access-setting-help" /> Allow screen, PC audio, mouse/keyboard
+          and commands</label
+        ><p id="access-setting-help">Stays on until you turn it off. Local input ends the current session.</p
+        ><button id="resume" hidden>Resume access</button
+        ><button id="reconnect">Reconnect</button
+        ><button id="unpair" class="secondary">Unpair</button>
+      </div>
+      <h2>Fingerprint</h2>
+      <code id="fingerprint">Not created</code>
+      <h2>Displays</h2>
+      <ul id="screens"></ul>
+      <footer>
+        Ctrl + Alt + Shift + Esc turns off remote access.
+        Lock, sleep and capture/input faults pause access until you resume locally.
+      </footer>
+    </main>
+  </body>
+</html>

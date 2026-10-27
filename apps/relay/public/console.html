@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Long Cable</title>
+    <link rel="stylesheet" href="/console.css" />
+    <script type="module" src="/console.mjs"></script>
+  </head>
+  <body>
+    <main id="long-cable-standalone-console">
+      <header>
+        <strong>Long Cable / PC</strong><span id="status" role="status">Offline</span
+        ><a href="/benchmark" target="_blank" rel="noreferrer"
+          >Network benchmark</a
+        >
+      </header>
+      <section id="login">
+        <h1>Your PC. Your URL.</h1><p>Sign in to your own instance. <a href="/demo">Try the simulated demo</a>.</p>
+        <p id="owner">Loading owner configuration�</p>
+        <form id="password-form">
+          <label for="password">Password</label
+          ><input
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            required
+            maxlength="1024"
+          /><button>Sign in</button>
+        </form>
+        <p id="mfa-enrollment" hidden>Add this setup key to your authenticator, then enter its six-digit code: <code id="mfa-secret"></code></p>
+        <form id="mfa-form" hidden>
+          <label for="mfa">Authenticator code</label
+          ><input
+            id="mfa"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            pattern="[0-9]{6}"
+            maxlength="6"
+            required
+          /><button>Verify</button>
+        </form>
+      </section>
+      <section id="workspace" hidden>
+        <nav>
+          <button id="pair">Pair PC</button
+          ><button id="refresh">Refresh PCs</button
+          ><button id="logout" class="secondary">Sign out</button>
+        </nav>
+        <p id="pair-code" class="code" role="status"></p>
+        <p id="pair-expiry"></p>
+        <div id="pair-review" hidden>
+          <p id="pair-fingerprint"></p>
+          <button id="approve">Approve matching PC</button>
+        </div>
+        <div class="toolbar">
+          <label title="Retry interrupted sessions. Local input and Disconnect stop recovery."><input id="auto-reconnect" type="checkbox" checked /> Auto reconnect</label>
+          <label
+            >PC
+            <select id="device">
+              <option value="">No PC online</option>
+            </select></label
+          >
+          <fieldset id="monitors"><legend>Screens</legend></fieldset>
+          <label
+            >FPS
+            <select id="fps">
+              <option value="60">60</option>
+              <option value="30">30</option>
+            </select></label
+          ><label title="Uses a TCP/TLS video relay; may add delay"><input id="compatibility" type="checkbox" /> Compatibility relay</label><label><input id="audio" type="checkbox" /> PC audio</label><button id="audio-resume" hidden>Enable audio playback</button><span id="audio-status"></span><button id="connect">Connect</button
+          ><button id="disconnect" class="secondary" disabled>
+            Disconnect
+          </button>
+        </div>
+        <div class="toolbar">
+          <label><input id="control" type="checkbox" /> Control input</label
+          ><label
+            >Layout
+            <select id="layout">
+              <option value="columns">Side by side</option>
+              <option value="rows">Stacked</option>
+              <option value="full">Focused screen</option>
+            </select></label
+          ><button id="fullscreen" class="secondary">Fullscreen</button
+          ><span id="privilege">User</span>
+        </div>
+        <p id="session-status" role="status"></p>
+        <p id="last-session-status" hidden></p>
+        <div id="videos" class="columns"></div>
+        <div id="stats" tabindex="0">
+          <span id="stats-summary"
+            >Relay — · PC — · Input — · p50 — · p99 —</span
+          >
+          <div id="stats-details"></div>
+        </div>
+        <section class="terminal">
+          <h2>Terminal</h2>
+          <form id="command-form">
+            <label
+              >Shell
+              <select id="shell">
+                <option value="powershell">PowerShell</option>
+                <option value="cmd">CMD</option>
+              </select></label
+            ><textarea
+              id="command"
+              maxlength="4096"
+              rows="3"
+              spellcheck="false"
+              autocapitalize="off"
+              autocomplete="off"
+              placeholder="Get-Date"
+            ></textarea
+            ><button id="run" disabled>Run</button
+            ><button id="stop-command" type="button" class="secondary" disabled>
+              Stop</button
+            ><span id="command-status" role="status"></span>
+          </form>
+          <pre id="output" tabindex="0">—</pre>
+        </section>
+        <button id="export" class="secondary">Export measurements</button>
+      </section>
+      <p id="error" role="alert"></p>
+      <footer>
+        Focused screen: 1080p / 60 or 30 FPS target. Other screen: 540p / 5 FPS
+        target. Physical input pauses PC access.
+      </footer>
+    </main>
+  </body>
+</html>

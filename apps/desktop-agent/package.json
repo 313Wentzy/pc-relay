@@ -1,0 +1,68 @@
+{
+  "name": "long-cable-app",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Owner-paired WebRTC PC agent with a Rust Windows input broker",
+  "author": "313Wentzy",
+  "type": "module",
+  "main": "main.mjs",
+  "scripts": {
+    "start": "npm run build:native && electron .",
+    "check": "node --check main.mjs && node --check preload.cjs && node --check renderer.js && node --check capture.js && node --check relay-client.mjs",
+    "build:windows": "npm run build:native && electron-builder --win zip",
+    "test": "node --test agent-policy.test.mjs",
+    "build:native": "powershell -NoProfile -Command \"New-Item -ItemType Directory -Force ../../.preview/native-build | Out-Null; rustc --edition 2021 -C opt-level=1 -C debuginfo=0 native-input.rs -o ../../.preview/native-build/native-input.exe; exit $LASTEXITCODE\""
+  },
+  "devDependencies": {
+    "electron": "45.0.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "dev.longcable.app",
+    "productName": "Long Cable",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.mjs",
+      "preload.cjs",
+      "renderer.js",
+      "capture.js",
+      "relay-client.mjs",
+      "command-runner.mjs",
+      "identity-vault.mjs",
+      "index.html",
+      "style.css",
+      "assets/icon.png",
+      "package.json",
+      "capture-policy.mjs",
+      "diagnostics.mjs",
+      "source-catalog.mjs"
+    ],
+    "win": {
+      "target": [
+        "zip"
+      ],
+      "signAndEditExecutable": false
+    },
+    "forceCodeSigning": false,
+    "extraResources": [
+      {
+        "to": "relay",
+        "filter": [
+          "auth.mjs",
+          "protocol.mjs"
+        ],
+        "from": "../relay"
+      }
+    ],
+    "extraFiles": [
+      {
+        "from": "../../.preview/native-build/native-input.exe",
+        "to": "native-input.exe"
+      }
+    ]
+  },
+  "license": "MIT"
+}
