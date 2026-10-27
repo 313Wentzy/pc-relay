@@ -878,7 +878,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   relay.server.listen(
     Number(process.env.PORT || 8790),
     process.env.HOST || (process.env.DYNO ? "0.0.0.0" : "127.0.0.1"),
-    () => console.log("Long Cable relay listening; no payload logging."),
+    () => console.log("PC Relay relay listening; no payload logging."),
   );
   for (const signal of ["SIGINT", "SIGTERM"])
     process.on(signal, () => relay.close().finally(() => process.exit()));

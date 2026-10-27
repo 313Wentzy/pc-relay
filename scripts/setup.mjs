@@ -7,7 +7,7 @@ try { await readFile(destination); console.error("apps/relay/.env already exists
 catch (error) { if (error.code !== "ENOENT") throw error; }
 const prompt = createInterface({ input: process.stdin, output: process.stdout });
 try {
-  console.log("Long Cable setup — create your own Supabase project and confirmed owner user first.\nNo service-role key is needed. This writes a local, Git-ignored .env file.");
+  console.log("PC Relay setup — create your own Supabase project and confirmed owner user first.\nNo service-role key is needed. This writes a local, Git-ignored .env file.");
   const owner = (await prompt.question("Owner email: ")).trim().toLowerCase();
   const project = (await prompt.question("Supabase project URL (https://…supabase.co): ")).trim().replace(/\/$/, "");
   const key = (await prompt.question("Supabase publishable key (sb_publishable_…): ")).trim();

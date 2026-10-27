@@ -29,7 +29,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 const entry = pathToFileURL(join(root, "index.html")).href;
 const background = process.argv.includes("--background");
 const connectorDirectory = join(process.env.LOCALAPPDATA || app.getPath("appData"), "LongCable");
-app.setName("Long Cable");
+app.setName("PC Relay");
 const stateDirectory = join(app.getPath("appData"), "Long Cable");
 mkdirSync(stateDirectory, { recursive: true });
 app.setPath("userData", stateDirectory);
@@ -108,10 +108,10 @@ function notify() {
   if (window && !window.isDestroyed())
     window.webContents.send("agent:status", status());
   if (tray) {
-    tray.setToolTip("Long Cable - " + (relay?.status().message || "Offline"));
+    tray.setToolTip("PC Relay - " + (relay?.status().message || "Offline"));
     tray.setContextMenu(
       Menu.buildFromTemplate([
-        { label: "Open Long Cable", click: open },
+        { label: "Open PC Relay", click: open },
         { label: "Turn off remote access", click: () => void disableAccess() },
         { type: "separator" },
         {
@@ -301,7 +301,7 @@ else {
         minWidth: 560,
         minHeight: 540,
         show: false,
-        title: "Long Cable",
+        title: "PC Relay",
         backgroundColor: "#101114",
         autoHideMenuBar: true,
         webPreferences: {

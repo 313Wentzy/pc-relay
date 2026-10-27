@@ -200,7 +200,7 @@ export class AgentRelay {
           type: "pair-join",
           code,
           publicKey: this.vault.publicIdentity().publicKey,
-          name: "Long Cable",
+          name: "PC Relay",
           signature,
         });
       else this.send({ type: "agent-auth", certificate, signature });

@@ -168,7 +168,7 @@ on($("password-form"), "submit", async (event) => {
       for (const factor of user.factors || [])
         if (factor.factor_type === "totp" && factor.status !== "verified")
           await api("factors/" + encodeURIComponent(factor.id), null, auth.access_token, "DELETE");
-      const enrollment = await api("factors", { factor_type: "totp", friendly_name: "Long Cable" });
+      const enrollment = await api("factors", { factor_type: "totp", friendly_name: "PC Relay" });
       factorId = enrollment.id;
       $("mfa-secret").textContent = enrollment.totp.secret;
       $("mfa-enrollment").hidden = false;
@@ -642,7 +642,7 @@ function renderAvailability() {
   $("disconnect").disabled = !recoveryRequest;
   $("session-status").textContent = !online ? "Relay offline"
     : !selectedDevice ? "PC offline"
-    : selectedDevice.paused ? "PC access paused" + (pauseLabels[selectedDevice.pauseReason] ? " · " + pauseLabels[selectedDevice.pauseReason] : " · enable in Long Cable")
+    : selectedDevice.paused ? "PC access paused" + (pauseLabels[selectedDevice.pauseReason] ? " · " + pauseLabels[selectedDevice.pauseReason] : " · enable in PC Relay")
     : selectedDevice.inUse ? "PC in use"
     : selectedDevice.available ? "Available"
     : "PC unavailable";

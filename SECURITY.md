@@ -1,6 +1,6 @@
 # Security
 
-Long Cable can control a PC and execute commands with the Windows host's
+PC Relay can control a PC and execute commands with the Windows host's
 permissions. Use it only for computers you own or are authorized to administer.
 This early release has not received an independent security audit.
 

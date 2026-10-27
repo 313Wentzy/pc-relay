@@ -1,6 +1,6 @@
 {
-  "name": "long-cable-app",
-  "version": "0.3.0",
+  "name": "pc-relay-app",
+  "version": "0.3.1",
   "private": true,
   "description": "Owner-paired WebRTC PC agent with a Rust Windows input broker",
   "author": "313Wentzy",
@@ -19,7 +19,7 @@
   },
   "build": {
     "appId": "dev.longcable.app",
-    "productName": "Long Cable",
+    "productName": "PC Relay",
     "asar": true,
     "directories": {
       "output": "dist"
@@ -60,7 +60,7 @@
     "extraFiles": [
       {
         "from": "../../LICENSE",
-        "to": "LICENSE.long-cable.txt"
+        "to": "LICENSE.pc-relay.txt"
       },
       {
         "from": "../../.preview/native-build/native-input.exe",

@@ -1,11 +1,16 @@
 {
-  "name": "long-cable",
+  "name": "pc-relay",
   "version": "0.1.0",
   "private": true,
   "description": "Your PC, one very long cable away. Self-hosted browser remote access.",
   "license": "MIT",
-  "workspaces": ["apps/relay", "apps/desktop-agent"],
-  "engines": { "node": ">=24" },
+  "workspaces": [
+    "apps/relay",
+    "apps/desktop-agent"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "setup": "node scripts/setup.mjs",
     "start": "npm start --workspace=apps/relay",
@@ -17,5 +22,7 @@
     "scan": "node scripts/scan.mjs",
     "test:browser": "playwright test"
   },
-  "devDependencies": { "@playwright/test": "1.64.1" }
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
 }

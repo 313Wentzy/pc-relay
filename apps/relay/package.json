@@ -1,5 +1,5 @@
 {
-  "name": "long-cable-relay",
+  "name": "pc-relay-server",
   "version": "0.1.0",
   "private": true,
   "type": "module",

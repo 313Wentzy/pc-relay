@@ -20,6 +20,6 @@ export function createDemo() {
 }
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const server = createDemo();
-  server.listen(Number(process.env.PORT || 4173), process.env.HOST || "127.0.0.1", () => console.log("Long Cable simulated demo: http://127.0.0.1:" + server.address().port));
+  server.listen(Number(process.env.PORT || 4173), process.env.HOST || "127.0.0.1", () => console.log("PC Relay simulated demo: http://127.0.0.1:" + server.address().port));
   for (const signal of ["SIGTERM", "SIGINT"]) process.on(signal, () => server.close());
 }

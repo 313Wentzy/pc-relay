@@ -1,13 +1,13 @@
-# Long Cable ↝
+# PC Relay ↝
 
-**Your PC, one very long cable away.**
+**Your PC. Your URL.**
 
 Self-hosted remote access to your Windows desktop from a browser. The Windows app,
 signaling relay, browser viewer, and interactive demo live in this repository.
 
-![Long Cable browser simulation](docs/demo.png)
+![PC Relay browser simulation](docs/demo.png)
 
-[![Checks](https://github.com/313Wentzy/long-cable/actions/workflows/checks.yml/badge.svg)](https://github.com/313Wentzy/long-cable/actions/workflows/checks.yml)
+[![Checks](https://github.com/313Wentzy/pc-relay/actions/workflows/checks.yml/badge.svg)](https://github.com/313Wentzy/pc-relay/actions/workflows/checks.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-a8d56d.svg)](LICENSE)
 
 ## Try it in 30 seconds
@@ -15,8 +15,8 @@ signaling relay, browser viewer, and interactive demo live in this repository.
 Requires Node.js 24+. This simulation needs no install, account, domain or API keys.
 
 ```sh
-git clone https://github.com/313Wentzy/long-cable.git
-cd long-cable
+git clone https://github.com/313Wentzy/pc-relay.git
+cd pc-relay
 npm run demo
 ```
 
@@ -42,8 +42,8 @@ performance depends on hardware and network. It has not received an independent 
 
 Actual PC access requires Windows 10/11, Node.js 24+, Rust with the MSVC C++ build
 tools, and your own Supabase project for sign-in and MFA.
-The [prebuilt Windows app](https://github.com/313Wentzy/long-cable/releases)
-lets you skip Rust and the C++ tools: extract its ZIP and run `Long Cable.exe`.
+The [prebuilt Windows app](https://github.com/313Wentzy/pc-relay/releases)
+lets you skip Rust and the C++ tools: extract its ZIP and run `PC Relay.exe`.
 You still need to run and configure your relay. The app is unsigned.
 
 ```sh
@@ -86,7 +86,7 @@ video. A domain is optional locally and for temporary tunnel tests.
 The software is MIT licensed. Hosting, domains, authentication and relay bandwidth
 can cost money. Cloudflare advertises 1,000 GB/month shared across TURN/SFU, then
 $0.05/GB; check [current pricing](https://developers.cloudflare.com/realtime/sfu/platform/pricing/)
-before enabling it. Self-hosting requires no subscription to Long Cable.
+before enabling it. Self-hosting requires no subscription to PC Relay.
 
 ## One repository
 
@@ -123,7 +123,7 @@ and localhost tests do not prove real provider configuration or remote performan
 Remote access is an established field. [RustDesk](https://github.com/rustdesk/rustdesk),
 [MeshCentral](https://github.com/Ylianst/MeshCentral) and
 [Apache Guacamole](https://guacamole.apache.org/) are useful alternatives.
-Long Cable explores a focused personal-PC experience with an inspectable stack.
+PC Relay explores a focused personal-PC experience with an inspectable stack.
 It does not claim a performance or security advantage over them.
 
 ## Contributing

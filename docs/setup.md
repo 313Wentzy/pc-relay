@@ -1,4 +1,4 @@
-# Set up Long Cable
+# Set up PC Relay
 
 ## Demo
 
@@ -27,8 +27,8 @@ sign-ins use that same authenticator. Owner checks happen on the server.
 
 ## Windows app
 
-The easiest path is the [prebuilt portable app](https://github.com/313Wentzy/long-cable/releases).
-Extract the entire ZIP and run `Long Cable.exe`. It is unsigned; no installer,
+The easiest path is the [prebuilt portable app](https://github.com/313Wentzy/pc-relay/releases).
+Extract the entire ZIP and run `PC Relay.exe`. It is unsigned; no installer,
 Windows service or scheduled task runs automatically. Keep all extracted files together.
 The following build tools are only needed when running the app from source.
 
@@ -42,8 +42,7 @@ enable access locally. Choose screens and connect.
 
 Test from another device: local input intentionally pauses remote control. Use
 the app to resume. Its tray **Quit** action stops it completely. No Windows
-service or scheduled task is installed. State uses the **Long Cable** application
-data directory; do not copy pairing files from the original private app.
+service or scheduled task is installed. Pairing state stays in your Windows user profile; do not copy another installation’s pairing files.
 
 ## Public access with Cloudflare Tunnel
 
@@ -94,8 +93,8 @@ credentials reach authenticated peers; use short-lived credentials and quotas.
 ## Docker
 
 ```sh
-docker build -t long-cable .
-docker run --rm --env-file apps/relay/.env -e HOST=0.0.0.0 -p 127.0.0.1:8790:8790 long-cable
+docker build -t pc-relay .
+docker run --rm --env-file apps/relay/.env -e HOST=0.0.0.0 -p 127.0.0.1:8790:8790 pc-relay
 ```
 
 Put a trusted HTTPS proxy/tunnel in front. Run **one relay process** per instance:
