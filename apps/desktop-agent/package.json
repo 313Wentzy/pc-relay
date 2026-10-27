@@ -59,6 +59,10 @@
     ],
     "extraFiles": [
       {
+        "from": "../../LICENSE",
+        "to": "LICENSE.long-cable.txt"
+      },
+      {
         "from": "../../.preview/native-build/native-input.exe",
         "to": "native-input.exe"
       }
